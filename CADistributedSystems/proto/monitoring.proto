@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+service HarvestMonitoring {
+    rpc UpdateProgress(ProgressUpdate) returns (bool);
+    rpc GetHarvestStatus(google.protobuf.Empty) returns (HarvestStatus);
+}
+
+message ProgressUpdate {
+    string field_id = 1;
+    float progress = 20; // Progress represented as a percentage
+}
+
+message HarvestStatus {
+    float progress = 1; // Progress of the harvest as a percentage
+    repeated string issues_encountered = 2; // Any issues encountered during the harvest process
+    // Add any other relevant information about the current status of the harvest
+}

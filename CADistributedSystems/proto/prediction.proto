@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service HarvestPrediction {
+    rpc predictHarvest(HarvestPredictionRequest) returns (HarvestPredictionResponse);
+}
+
+message PredictionRequest {
+    string crop_type: "Corn"
+    string weather_forecast: "Sunny"
+    string soil_condition: "Optimal"
+    // Other parameters can be added
+}
+
+message HarvestPredictionResponse {
+    float predicted_yield = 1;
+}

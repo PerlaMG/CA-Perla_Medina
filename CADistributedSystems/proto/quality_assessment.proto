@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+service HarvestQualityAssessment {
+    rpc assessHarvestQuality(HarvestQualityAssessmentRequest) returns (HarvestQualityAssessmentResponse);
+}
+
+message HarvestQualityAssessmentRequest {
+    repeated ProduceSample produce_samples = 1;
+    EnvironmentalConditions environmental_conditions = 2;
+    // Add other parameters as needed
+}
+
+message ProduceSample {
+    int32 sample_id = 1;
+    string produce_type = 2;
+    float weight = 3;
+    string color = 4;
+    // Add other attributes as needed
+}
+
+message EnvironmentalConditions {
+    float temperature = 1;
+    float humidity = 2;
+    // Add other environmental conditions as needed
+}
+
+message HarvestQualityAssessmentResponse {
+    string quality_grade = 1;
+    float freshness_rating = 2;
+    // Add other quality assessment metrics as needed
+}
