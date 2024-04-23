@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package smartFarming;
+
+import "google/protobuf/timestamp.proto";
+
+service HarvestMonitoring {
+  rpc UpdateProgress(stream ProgressUpdateRequest) returns (stream ProgressUpdateResponse);
+  rpc GetHarvestStatus(GetHarvestStatusRequest) returns (stream HarvestStatusResponse);
+}
+
+message ProgressUpdateRequest {
+  string field_id = 1;
+  ProgressUpdate progress_update = 2;
+}
+
+message ProgressUpdate {
+  float progress = 1;
+  string status_message = 2;
+}
+
+message ProgressUpdateResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetHarvestStatusRequest {
+  string field_id = 1;
+}
+
+message HarvestStatus {
+  float progress = 1;
+  repeated Issue issues_encountered = 2;
+  string status_message = 3;
+  string operator_id = 4;
+  google.protobuf.Timestamp start_time = 5;
+  google.protobuf.Timestamp end_time = 6;
+}
+
+message Issue {
+  string code = 1;
+  string message = 2;
+  float severity = 3;
+}
+
+message HarvestStatusResponse {
+  HarvestStatus harvest_status = 1;
+  bool success = 2;
+  string message = 3;
+}
