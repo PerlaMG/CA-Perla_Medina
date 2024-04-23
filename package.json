@@ -1,0 +1,20 @@
+{
+  "name": "smartfarmingservices",
+  "version": "1.0.0",
+  "main": "harvest_monitoring_client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.10.6",
+    "@grpc/proto-loader": "^0.7.12",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "google-protobuf": "^3.21.2",
+    "protobufjs": "^7.2.6"
+  }
+}
